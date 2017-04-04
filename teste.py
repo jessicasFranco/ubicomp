@@ -14,7 +14,7 @@ def main():
     openWeatherDaily()
     openWeatherForecast ()
     
-
+#isto é um comentário
 #appkey para o openWeatherMap
 appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c"}
 
