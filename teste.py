@@ -38,9 +38,9 @@ def openWeatherDaily ():
     request = url + appid["openWeather"]
     response =urllib.request.urlopen(request).read().decode("utf-8")
     values = json.loads(response)
-    part = values["dt"]
-    save(part)
-    print (convert_time(part))
+    part = values["main"]
+    #save(part)
+    print (part)
     
 #previsão semanal do tempo usando a api openWeatherMap
 def openWeatherForecast ():
