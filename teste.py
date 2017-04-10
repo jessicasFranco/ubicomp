@@ -1,6 +1,7 @@
 import urllib.request
 import json
-import ast
+import pickle
+import os
 from datetime import datetime as dt
 
 def main():
@@ -11,8 +12,10 @@ def main():
     #variavel global para a longitude
     global lon
     lon = coordinates[1]
+    global lista
+    lista = list()
     openWeatherDaily()
-    openWeatherForecast ()
+    #openWeatherForecast ()
     
 #isto é um comentário
 #appkey para o openWeatherMap
@@ -39,8 +42,10 @@ def openWeatherDaily ():
     response =urllib.request.urlopen(request).read().decode("utf-8")
     values = json.loads(response)
     part = values["main"]
-    #save(part)
-    print (part)
+    global dt
+    dt = convert_time(values["dt"])
+    save(part)
+    
     
 #previsão semanal do tempo usando a api openWeatherMap
 def openWeatherForecast ():
@@ -53,6 +58,8 @@ def openWeatherForecast ():
         print(val)
     #    print (convert_time(float(val["dt"])))
         print ("\n")
+
+
 #pervisões segundo a api darksky, retorna um json com os resultados
 def darkSky():
     url = "https://api.darksky.net/forecast/"+ appid["darkSky"]
@@ -73,18 +80,25 @@ def convert_time(date):
 
 #função para escrever os dados num ficheiro 
 def save (dataInput):
-    with open ("data.json","a") as f:
-        if f.tell() != 0:
-            d = ","
-            f.write(d)
-    with open ("data.json","a") as f:
-        json.dump(dataInput,f)
-#def load():
- #   global data
-  #  with open("data.json","r+") as f:
-   #     temp = json.load(f)
-    #    data = json.dumps(temp)
-     #   return data
-    
+   if not os.path.exists("data.json"):
+       open("data.json","w").close()
+   aux = []
+   try:
+       temp = load()
+       for item in temp:
+           aux.append(item)
+   except ValueError:
+       print("Empty File")
+   f = open ("data.json","w")
+   aux.append(dataInput)
+   json.dump(aux,f)
+   f.close
+def load():
+    with open("data.json") as f:
+        lista = json.load(f)
+        return lista      
+            
 #para arrancar o script automáticamente
 if __name__ == "__main__": main()
+#APIS
+#https://apidev.accuweather.com/developers/forecastsAPIParameters
