@@ -20,7 +20,7 @@ def main():
 #isto é um comentário
 #appkey para o openWeatherMap
 appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c"}
-
+files = {"DailyData":"DailyData.json"}
 #previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
 #informação que conseguimos obter para esta api
 #clouds
@@ -41,12 +41,11 @@ def openWeatherDaily ():
     request = url + appid["openWeather"]
     response =urllib.request.urlopen(request).read().decode("utf-8")
     values = json.loads(response)
-    part = values["main"]
+    part = dict()
     global dt
     dt = convert_time(values["dt"])
-    save(part)
-    
-    
+    part[str(dt)] = values["main"]   
+    save(part,files["DailyData"])   
 #previsão semanal do tempo usando a api openWeatherMap
 def openWeatherForecast ():
     url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&lang=zh_cn"
@@ -58,8 +57,6 @@ def openWeatherForecast ():
         print(val)
     #    print (convert_time(float(val["dt"])))
         print ("\n")
-
-
 #pervisões segundo a api darksky, retorna um json com os resultados
 def darkSky():
     url = "https://api.darksky.net/forecast/"+ appid["darkSky"]
@@ -72,29 +69,27 @@ def loc():
     coordinates = values["loc"].split(",")
     return coordinates
 
-
 #função para converter as datas em formato unix para formato normal    
 def convert_time(date):
    return dt.fromtimestamp(date)
-
-
 #função para escrever os dados num ficheiro 
-def save (dataInput):
-   if not os.path.exists("data.json"):
-       open("data.json","w").close()
+def save (dataInput,file):
+   if not os.path.exists(file):
+       open(file,"w").close()
    aux = []
    try:
-       temp = load()
+       temp = load(file)
        for item in temp:
            aux.append(item)
    except ValueError:
        print("Empty File")
-   f = open ("data.json","w")
+   f = open (file,"w")
    aux.append(dataInput)
    json.dump(aux,f)
    f.close
-def load():
-    with open("data.json") as f:
+def load(file):
+    global lista
+    with open(file) as f:
         lista = json.load(f)
         return lista      
             
