@@ -16,7 +16,6 @@ def main():
     #openWeatherDaily()
     openWeatherForecast ()
     
-#isto é um comentário
 #appkey para o openWeatherMap
 appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c"}
 files = {"DailyData":"DailyData.json"}
@@ -49,6 +48,7 @@ def openWeatherDaily ():
 def openWeatherForecast ():
     url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&lang=zh_cn"
     request = url + appid["openWeather"]
+    #Open the url to read
     response =urllib.request.urlopen(request).read().decode("utf-8")
     values = json.loads(response)
     part = values["list"]
@@ -75,6 +75,7 @@ def convert_time(date):
 #função para escrever os dados num ficheiro 
 def save (dataInput,file):
    if not os.path.exists(file):
+       #retorna o ficheiro e o modo que pode ser usado neste caso w=writing e fecha-o
        open(file,"w").close()
    aux = []
    try:
@@ -83,10 +84,15 @@ def save (dataInput,file):
            aux.append(item)
    except ValueError:
        print("Empty File")
+   #retorna o ficheiro e o modo que pode ser usado neste caso w=writing
    f = open (file,"w")
+   #coloca os dados entre as [] do aux
    aux.append(dataInput)
+   #escreve os dados do aux no ficheiro
    json.dump(aux,f)
+   #fecha o ficheiro
    f.close
+#coloca os dados em lista    
 def load(file):
     global lista
     with open(file) as f:
