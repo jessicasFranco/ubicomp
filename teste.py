@@ -1,6 +1,5 @@
 import urllib.request
 import json
-import pickle
 import os
 from datetime import datetime as dt
 
