@@ -13,8 +13,8 @@ def main():
     lon = coordinates[1]
     global lista
     lista = list()
-    openWeatherDaily()
-    #openWeatherForecast ()
+    #openWeatherDaily()
+    openWeatherForecast ()
     
 #isto é um comentário
 #appkey para o openWeatherMap
@@ -52,10 +52,11 @@ def openWeatherForecast ():
     response =urllib.request.urlopen(request).read().decode("utf-8")
     values = json.loads(response)
     part = values["list"]
-    for val in part:
-        print(val)
+    print (values)
+    #for val in part:
+     #   print(val)
     #    print (convert_time(float(val["dt"])))
-        print ("\n")
+      #  print ("\n")
 #pervisões segundo a api darksky, retorna um json com os resultados
 def darkSky():
     url = "https://api.darksky.net/forecast/"+ appid["darkSky"]
