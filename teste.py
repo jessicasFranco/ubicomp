@@ -14,13 +14,17 @@ def main():
     lon = coordinates[1]
     global lista
     lista = list()
+    
     #openWeatherDaily()
     #openWeatherForecast ()
-    #darkSky()
+    #darkSky("minutely,hourly,daily,alerts,flags")
+    #darkSky("currently,minutely,hourly,allerts,flags")
+    #a = load("DarkSkyDaily.json")
+    #print (len(a))
     
 #appkey para o openWeatherMap
-appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c"}
-files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSky":"DarkSky.json"}
+appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c","apixu":"9b0e54aba45b4826b7c175749172004"}
+files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSkyCurrent":"DarkSkyCurrent.json","DarkSkyDaily":"DarkSkyDaily.json"}
 #previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
 #informação que conseguimos obter para esta api
 #clouds
@@ -63,24 +67,31 @@ def openWeatherForecast ():
         val["dt"] = str(convert_time(val["dt"]))
     save(part,files["ForeCast"])
 #pervisões segundo a api darksky, retorna um json com os resultados
-def darkSky(kind = list()):
-    if len(kind)!= 0:
-        exclude = str(kind)
-        exclude = exclude[1:-1]
-        exclude.replace(" ","")
-        print (exclude)
-        #for item in kind:
-        
-    url = "https://api.darksky.net/forecast/" + appid["darkSky"] + "/" + lat + "," + lon + "?exclude=flags, alerts, daily, minutely, currently"
+#dá as previsões que estão momento ou um forecast dos proximos 7 dias
+def darkSky(kind):  
+    url = "https://api.darksky.net/forecast/" + appid["darkSky"] + "/" + lat + "," + lon + "?exclude=" + kind + "&units=auto"
     response = urllib.request.urlopen(url).read().decode("utf-8")
     values = json.loads(response)
-    part = values["hourly"]
-    part1 = part["data"]
-    for item in part1:
-        item["time"] = str(convert_time(item["time"]))
-        print (item["time"])
-    #save (values,files["darkSky"])
-    #print (values)
+    #if para fazer forecasts da semana ou para o dia
+    if (kind == "minutely,hourly,daily,alerts,flags"):
+        #dados do tempo que se fazer sentir no momento do pedido
+        part = values["currently"]
+        #guardar os dados no ficheiro
+        save (part,files["darkSkyCurrent"])
+    elif (kind == "currently,minutely,hourly,allerts,flags"):
+        #dados da previão para a semana
+        part = values["daily"]["data"]
+        new_part = dict()
+        for item in part:
+            name = str(convert_time(item["time"]))
+            new_part[name] = item
+        #guardar os dados no ficheiro
+        save(new_part,files["DarkSkyDaily"])
+def apixu():
+    url = "http://api.apixu.com/v1/current.json?key=9b0e54aba45b4826b7c175749172004&q=15.07,80.32"
+    response = urllib.request.urlopen(url).read().decode("utf-8")
+    values = json.loads(response)
+    print (values)
 #metodo para ver as coordenadas atravez do ip, no final retorna um vector
 def loc():
     url = "http://ipinfo.io/json"
@@ -96,7 +107,7 @@ def convert_time(date):
 def save (dataInput,file):
    if not os.path.exists(file):
        #retorna o ficheiro e o modo que pode ser usado neste caso w=writing e fecha-o
-       open(file,"w").close()
+       open(file,"w").close() 
    aux = []
    try:
        temp = load(file)
@@ -123,4 +134,3 @@ def load(file):
 if __name__ == "__main__": main()
 #APIS
 #https://apidev.accuweather.com/developers/forecastsAPIParameters
-#https://github.com/ZeevG/python-forecast.io/blob/master/README.rst->darkSky Biblioteca
