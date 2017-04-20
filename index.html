@@ -1,30 +1,196 @@
-<link rel="stylesheet" type="text/css" href="calendar.css" media="screen" />
-<head>
-          <script type="text/javascript" src="calendar.js"></script>
-          <!--other script and also external css included over here-->
-    </head>
-<div class="divcalendar">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WearWeather</title>
+    <meta charset='utf-8' />
+  </head>
+  <body>
+   
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize-button" style="display: none;">Authorize</button>
+    <button id="signout-button" style="display: none;">Sign Out</button>
 
-<div id="calendaroverallcontrols">
-  <!-- <div id="year"></div> -->
+    <pre id="content"></pre>
 
-  <div id="calendarmonthcontrols">
-    <a id="btnPrevYr" href="#" title="Previous Year"><span><<</span></a>
+    <script type="text/javascript">
+	    // date variables
+        var now = new Date();
+        today = now.toISOString();
 
-    <a id="btnPrev" href="#" title="Previous Month"><span><</span></a>
+        var twoHoursLater = new Date(now.getTime() + (2 * 1000 * 60 * 60));
+        twoHoursLater = twoHoursLater.toISOString();	
+	
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '854034297509-mbcc8o3rt2rmtsc8c1m8dug5hak3jlbo.apps.googleusercontent.com';
+	  var apiKey = 'mHSKDAKYGstwWrL9Oo_84GeQ';
 
-    <!-- <input type="button" src="images/btnprevmonth.png" alt="Submit" id="btnPrev"/>-->
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
 
-    <!-- <div id="month"></div>-->
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = "https://www.googleapis.com/auth/calendar";
 
-    <div id="monthandyear"></div>
+      // OAuth2 functions
+        function handleClientLoad() {
+            gapi.client.setApiKey(apiKey);
+            window.setTimeout(checkAuth, 1);
+        }
 
-    <!--<input type="button" src="images/btnnextmonth.png" alt="Submit" id="btnNext"/>-->
+        function checkAuth() {
+            gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+        }
 
-    <a id="btnNext" href="#" title="Next Month"><span>></span></a>
+        // show/hide the 'authorize' button, depending on application state
+        function handleAuthResult(authResult) {
+            var authorizeButton = document.getElementById('authorize-button');
+            var eventButton = document.getElementById('btnCreateEvents');
+            var resultPanel = document.getElementById('result-panel');
+            var resultTitle = document.getElementById('result-title');
 
-    <a id="btnNextYr" href="#" title="Next Year"><span>>></span></a>      
-  </div>
-</div>
+            if (authResult && !authResult.error) {
+                authorizeButton.style.visibility = 'hidden'; 		// if authorized, hide button
+                resultPanel.className = resultPanel.className.replace(/(?:^|\s)panel-danger(?!\S)/g, '')	// remove red class
+                resultPanel.className += ' panel-success'; 			// add green class
+                resultTitle.innerHTML = 'Application Authorized'		// display 'authorized' text
+                eventButton.style.visibility = 'visible';
+                $("#txtEventDetails").attr("visibility", "visible");
+            } else {													// otherwise, show button
+                authorizeButton.style.visibility = 'visible';
+                $("#txtEventDetails").attr("visibility", "hidden");
+                eventButton.style.visibility = 'hidden';
+                resultPanel.className += ' panel-danger'; 			// make panel red
+                authorizeButton.onclick = handleAuthClick; 			// setup function to handle button click
+            }
+        }
 
-<div id="divcalendartable"></div>
+        // function triggered when user authorizes app
+        function handleAuthClick(event) {
+            gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: false }, handleAuthResult);
+            return false;
+        }
+
+        function refreshICalendarframe() {
+            var iframe = document.getElementById('divifm')
+            iframe.innerHTML = iframe.innerHTML;
+        }
+        // setup event details
+        
+        // function load the calendar api and make the api call
+        function makeApiCall() {
+            var eventResponse = document.getElementById('event-response');
+           
+            gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
+                var request = gapi.client.calendar.events.insert
+                ({
+                    'calendarId': '24tn4fht2tr6m86efddfgdfdk@group.calendar.google.com', // calendar ID
+                    "resource": resource							// pass event details with api call
+                });
+                
+                // handle the response from our api call
+                request.execute(function (resp) {
+                    if (resp.status == 'confirmed') {
+                        eventResponse.innerHTML = "Event created successfully. View it <a href='" + resp.htmlLink + "'>online here</a>.";
+                        eventResponse.className += ' panel-success';
+                        refreshICalendarframe();
+                    } else {
+                        document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
+                        eventResponse.className += ' panel-danger';
+                    }
+                });
+            });
+        }
+        var resource = {
+            "summary": "My Event",
+			"start": {
+                "dateTime": today
+            },
+            "end": {
+                "dateTime": twoHoursLater
+            },
+            "description":"We are organizing events",
+            "location":"US",
+            "attendees":[
+			{
+					"email":"xyz@gmail.com",
+					"displayName":"Shaveta",
+					"organizer":true,
+					"self":false,
+					"resource":false,
+					"optional":false,
+					"responseStatus":"needsAction",
+					"comment":"This is event first",
+					"additionalGuests":3
+					
+			},
+			{	
+				"email":"abc@gmail.com",
+					"displayName":"Chatak",
+					"organizer":true,
+					"self":false,
+					"resource":false,
+					"optional":false,
+					"responseStatus":"needsAction",
+					"comment":"This is office event",
+					"additionalGuests":3
+			}
+			],
+		};
+
+		// FUNCTION TO DELETE EVENT
+	   function deleteEvent() {
+		 gapi.client.load('calendar', 'v3', function() {  
+		   var request = gapi.client.calendar.events.delete({
+			 'calendarId': '24tn4fht2tr6mdfsdfertlsedk@group.calendar.google.com',
+			 'eventId': 'Hdusrtsbs8'
+		   });
+		 request.execute(function(resp) {
+			if (resp.status == 'confirmed') {
+				alert("Event was successfully removed from the calendar!");
+			}
+			else{
+				alert('An error occurred, please try again later.')
+			}
+		 });
+		 });
+	   } 
+ 
+
+		</script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <button id="authorize-button" style="visibility: hidden" class="btn btn-primary">
+                    Authorize</button>
+            </div>
+            <!-- .col -->
+            <div class="col-md-10 col-sm-10 col-xs-12">
+                <div class="panel panel-danger" id="result-panel">
+                    <div class="panel-heading">
+                        <h1>
+                            WearWeather</h1>
+							 <p>Configure your calendar so that we can help you</p>
+                    </div>
+                </div>
+                       <!--  <input id="txtEventDetails" type="text" /> -->
+                <button id="btnCreateEvents" class="btn btn-primary" onclick="makeApiCall();">
+                    Create Events</button>  
+				<button id="btnDeleteEvents" class="btn btn-primary" onclick="deleteEvent();">
+                    Delete Events</button> 
+				</br>					
+                <div id="event-response">
+                </div>
+                <div id="divifm">
+                    <iframe id="ifmCalendar" src="https://calendar.google.com/calendar/embed?src=jessicasfranco%40gmail.com&ctz=Europe/Lisbon"
+                        style="border-width: 0" width="950" height="520" frameborder="0" scrolling="no">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
