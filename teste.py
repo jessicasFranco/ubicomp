@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import os
+import forecastio 
 from datetime import datetime as dt
 
 def main():
@@ -14,11 +15,12 @@ def main():
     global lista
     lista = list()
     #openWeatherDaily()
-    openWeatherForecast ()
+    #openWeatherForecast ()
+    #darkSky()
     
 #appkey para o openWeatherMap
 appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c"}
-files = {"DailyData":"DailyData.json"}
+files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSky":"DarkSky.json"}
 #previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
 #informação que conseguimos obter para esta api
 #clouds
@@ -45,6 +47,11 @@ def openWeatherDaily ():
     part[str(dt)] = values["main"]   
     save(part,files["DailyData"])   
 #previsão semanal do tempo usando a api openWeatherMap
+#city
+#message
+#list
+#cod
+#cnt
 def openWeatherForecast ():
     url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&lang=zh_cn"
     request = url + appid["openWeather"]
@@ -52,15 +59,28 @@ def openWeatherForecast ():
     response =urllib.request.urlopen(request).read().decode("utf-8")
     values = json.loads(response)
     part = values["list"]
-    print (values)
-    #for val in part:
-     #   print(val)
-    #    print (convert_time(float(val["dt"])))
-      #  print ("\n")
+    for val in part:
+        val["dt"] = str(convert_time(val["dt"]))
+    save(part,files["ForeCast"])
 #pervisões segundo a api darksky, retorna um json com os resultados
-def darkSky():
-    url = "https://api.darksky.net/forecast/"+ appid["darkSky"]
-    
+def darkSky(kind = list()):
+    if len(kind)!= 0:
+        exclude = str(kind)
+        exclude = exclude[1:-1]
+        exclude.replace(" ","")
+        print (exclude)
+        #for item in kind:
+        
+    url = "https://api.darksky.net/forecast/" + appid["darkSky"] + "/" + lat + "," + lon + "?exclude=flags, alerts, daily, minutely, currently"
+    response = urllib.request.urlopen(url).read().decode("utf-8")
+    values = json.loads(response)
+    part = values["hourly"]
+    part1 = part["data"]
+    for item in part1:
+        item["time"] = str(convert_time(item["time"]))
+        print (item["time"])
+    #save (values,files["darkSky"])
+    #print (values)
 #metodo para ver as coordenadas atravez do ip, no final retorna um vector
 def loc():
     url = "http://ipinfo.io/json"
@@ -89,7 +109,7 @@ def save (dataInput,file):
    #coloca os dados entre as [] do aux
    aux.append(dataInput)
    #escreve os dados do aux no ficheiro
-   json.dump(aux,f)
+   json.dump(aux,f,indent=3)
    #fecha o ficheiro
    f.close
 #coloca os dados em lista    
@@ -103,3 +123,4 @@ def load(file):
 if __name__ == "__main__": main()
 #APIS
 #https://apidev.accuweather.com/developers/forecastsAPIParameters
+#https://github.com/ZeevG/python-forecast.io/blob/master/README.rst->darkSky Biblioteca
