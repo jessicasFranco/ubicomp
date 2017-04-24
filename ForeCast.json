@@ -2,349 +2,175 @@
    [
       {
          "humidity": 100,
-         "speed": 3.21,
-         "pressure": 1026.23,
-         "deg": 237,
          "temp": {
-            "max": 18.44,
-            "morn": 18.44,
-            "day": 18.11,
-            "eve": 17.61,
-            "min": 17.61,
-            "night": 18.4
+            "eve": 19,
+            "day": 19,
+            "max": 19,
+            "morn": 19,
+            "min": 19,
+            "night": 19
          },
+         "pressure": 1029.44,
+         "speed": 1.66,
+         "deg": 88,
+         "dt": "2017-04-24 02:00:00",
+         "clouds": 8,
          "weather": [
             {
-               "description": "\u5c0f\u96e8",
                "icon": "10d",
                "main": "Rain",
-               "id": 500
+               "id": 500,
+               "description": "\u5c0f\u96e8"
             }
-         ],
-         "clouds": 88,
-         "rain": 0.72,
-         "dt": "2017-04-12 02:00:00"
+         ]
       },
       {
          "humidity": 100,
-         "speed": 3.87,
-         "pressure": 1027.35,
-         "deg": 238,
          "temp": {
-            "max": 19.1,
-            "morn": 18.43,
-            "day": 18.02,
-            "eve": 17.77,
-            "min": 17.73,
-            "night": 19.1
+            "eve": 17.36,
+            "day": 17.93,
+            "max": 18.8,
+            "morn": 18.8,
+            "min": 17.36,
+            "night": 17.74
          },
+         "pressure": 1027.85,
+         "speed": 2.22,
+         "deg": 98,
+         "dt": "2017-04-25 02:00:00",
+         "clouds": 80,
          "weather": [
             {
-               "description": "\u6674\uff0c\u5c11\u4e91",
-               "icon": "02n",
-               "main": "Clouds",
-               "id": 801
-            }
-         ],
-         "clouds": 24,
-         "dt": "2017-04-13 02:00:00"
-      },
-      {
-         "humidity": 100,
-         "speed": 1.01,
-         "pressure": 1028.35,
-         "deg": 240,
-         "temp": {
-            "max": 19.04,
-            "morn": 18.94,
-            "day": 17.83,
-            "eve": 17.63,
-            "min": 17.63,
-            "night": 19.04
-         },
-         "weather": [
-            {
-               "description": "\u5c0f\u96e8",
                "icon": "10n",
                "main": "Rain",
-               "id": 500
+               "id": 500,
+               "description": "\u5c0f\u96e8"
             }
-         ],
-         "clouds": 80,
-         "dt": "2017-04-14 02:00:00"
+         ]
       },
-      {
-         "humidity": 0,
-         "speed": 5.99,
-         "pressure": 1028.64,
-         "deg": 198,
-         "temp": {
-            "max": 18.68,
-            "morn": 18.62,
-            "day": 18.22,
-            "eve": 18.16,
-            "min": 18.16,
-            "night": 18.68
-         },
-         "weather": [
-            {
-               "description": "\u5c0f\u96e8",
-               "icon": "10d",
-               "main": "Rain",
-               "id": 500
-            }
-         ],
-         "clouds": 79,
-         "rain": 1.76,
-         "dt": "2017-04-15 02:00:00"
-      },
-      {
-         "humidity": 0,
-         "speed": 3.89,
-         "pressure": 1028.01,
-         "deg": 139,
-         "temp": {
-            "max": 18.85,
-            "morn": 18.85,
-            "day": 18.06,
-            "eve": 17.77,
-            "min": 17.77,
-            "night": 18.45
-         },
-         "weather": [
-            {
-               "description": "\u5c0f\u96e8",
-               "icon": "10d",
-               "main": "Rain",
-               "id": 500
-            }
-         ],
-         "clouds": 78,
-         "rain": 1.37,
-         "dt": "2017-04-16 02:00:00"
-      },
-      {
-         "humidity": 0,
-         "speed": 3.23,
-         "pressure": 1026.54,
-         "deg": 122,
-         "temp": {
-            "max": 18.42,
-            "morn": 18.42,
-            "day": 17.7,
-            "eve": 17.18,
-            "min": 17.18,
-            "night": 18
-         },
-         "weather": [
-            {
-               "description": "\u5c0f\u96e8",
-               "icon": "10d",
-               "main": "Rain",
-               "id": 500
-            }
-         ],
-         "clouds": 10,
-         "rain": 0.42,
-         "dt": "2017-04-17 02:00:00"
-      },
-      {
-         "humidity": 0,
-         "speed": 3.54,
-         "pressure": 1026.44,
-         "deg": 334,
-         "temp": {
-            "max": 18.29,
-            "morn": 18.16,
-            "day": 17.25,
-            "eve": 17.39,
-            "min": 17.25,
-            "night": 18.29
-         },
-         "weather": [
-            {
-               "description": "\u6674",
-               "icon": "01d",
-               "main": "Clear",
-               "id": 800
-            }
-         ],
-         "clouds": 24,
-         "dt": "2017-04-18 02:00:00"
-      }
-   ],
-   [
       {
          "humidity": 100,
-         "dt": "2017-04-12 02:00:00",
-         "pressure": 1026.23,
-         "deg": 237,
-         "speed": 3.21,
          "temp": {
-            "max": 18.43,
-            "morn": 18.43,
-            "day": 18.11,
-            "eve": 17.61,
-            "min": 17.61,
+            "eve": 17.96,
+            "day": 17.91,
+            "max": 18.2,
+            "morn": 17.75,
+            "min": 17.66,
+            "night": 18.2
+         },
+         "pressure": 1023.45,
+         "speed": 6.36,
+         "deg": 136,
+         "dt": "2017-04-26 02:00:00",
+         "rain": 5.9,
+         "clouds": 88,
+         "weather": [
+            {
+               "icon": "10d",
+               "main": "Rain",
+               "id": 501,
+               "description": "\u4e2d\u96e8"
+            }
+         ]
+      },
+      {
+         "humidity": 0,
+         "temp": {
+            "eve": 18.36,
+            "day": 18.58,
+            "max": 18.77,
+            "morn": 18.77,
+            "min": 18.36,
             "night": 18.4
          },
+         "pressure": 1020.8,
+         "speed": 5.81,
+         "deg": 249,
+         "dt": "2017-04-27 02:00:00",
+         "rain": 17.88,
+         "clouds": 42,
          "weather": [
             {
+               "icon": "10d",
                "main": "Rain",
-               "id": 500,
-               "description": "\u5c0f\u96e8",
-               "icon": "10d"
+               "id": 502,
+               "description": "\u5927\u96e8"
             }
-         ],
-         "clouds": 88,
-         "rain": 0.72
+         ]
       },
       {
-         "humidity": 100,
-         "dt": "2017-04-13 02:00:00",
-         "pressure": 1027.35,
-         "deg": 238,
-         "speed": 3.87,
+         "humidity": 0,
          "temp": {
-            "max": 19.1,
+            "eve": 17.49,
+            "day": 17.64,
+            "max": 18.12,
+            "morn": 17.71,
+            "min": 17.49,
+            "night": 18.12
+         },
+         "pressure": 1025.28,
+         "speed": 11.97,
+         "deg": 59,
+         "dt": "2017-04-28 02:00:00",
+         "rain": 6.69,
+         "clouds": 94,
+         "weather": [
+            {
+               "icon": "10d",
+               "main": "Rain",
+               "id": 501,
+               "description": "\u4e2d\u96e8"
+            }
+         ]
+      },
+      {
+         "humidity": 0,
+         "temp": {
+            "eve": 17.76,
+            "day": 18.25,
+            "max": 18.43,
             "morn": 18.43,
-            "day": 18.02,
-            "eve": 17.77,
-            "min": 17.73,
-            "night": 19.1
+            "min": 17.76,
+            "night": 18.07
          },
+         "pressure": 1026.78,
+         "speed": 9.73,
+         "deg": 58,
+         "dt": "2017-04-29 02:00:00",
+         "rain": 1.45,
+         "clouds": 96,
          "weather": [
             {
-               "main": "Clouds",
-               "id": 801,
-               "description": "\u6674\uff0c\u5c11\u4e91",
-               "icon": "02n"
-            }
-         ],
-         "clouds": 24
-      },
-      {
-         "humidity": 100,
-         "dt": "2017-04-14 02:00:00",
-         "pressure": 1028.35,
-         "deg": 240,
-         "speed": 1.01,
-         "temp": {
-            "max": 19.04,
-            "morn": 18.94,
-            "day": 17.83,
-            "eve": 17.63,
-            "min": 17.63,
-            "night": 19.04
-         },
-         "weather": [
-            {
+               "icon": "10d",
                "main": "Rain",
                "id": 500,
-               "description": "\u5c0f\u96e8",
-               "icon": "10n"
+               "description": "\u5c0f\u96e8"
             }
-         ],
-         "clouds": 80
+         ]
       },
       {
          "humidity": 0,
-         "dt": "2017-04-15 02:00:00",
-         "pressure": 1028.64,
-         "deg": 198,
-         "speed": 5.99,
          "temp": {
-            "max": 18.68,
-            "morn": 18.62,
-            "day": 18.22,
-            "eve": 18.16,
-            "min": 18.16,
-            "night": 18.68
+            "eve": 16.96,
+            "day": 17.54,
+            "max": 18.23,
+            "morn": 18.23,
+            "min": 16.96,
+            "night": 18.18
          },
+         "pressure": 1029.58,
+         "speed": 3.82,
+         "deg": 21,
+         "dt": "2017-04-30 02:00:00",
+         "clouds": 0,
          "weather": [
             {
-               "main": "Rain",
-               "id": 500,
-               "description": "\u5c0f\u96e8",
-               "icon": "10d"
-            }
-         ],
-         "clouds": 79,
-         "rain": 1.76
-      },
-      {
-         "humidity": 0,
-         "dt": "2017-04-16 02:00:00",
-         "pressure": 1028.01,
-         "deg": 139,
-         "speed": 3.89,
-         "temp": {
-            "max": 18.85,
-            "morn": 18.85,
-            "day": 18.06,
-            "eve": 17.77,
-            "min": 17.77,
-            "night": 18.45
-         },
-         "weather": [
-            {
-               "main": "Rain",
-               "id": 500,
-               "description": "\u5c0f\u96e8",
-               "icon": "10d"
-            }
-         ],
-         "clouds": 78,
-         "rain": 1.37
-      },
-      {
-         "humidity": 0,
-         "dt": "2017-04-17 02:00:00",
-         "pressure": 1026.54,
-         "deg": 122,
-         "speed": 3.23,
-         "temp": {
-            "max": 18.42,
-            "morn": 18.42,
-            "day": 17.7,
-            "eve": 17.18,
-            "min": 17.18,
-            "night": 18
-         },
-         "weather": [
-            {
-               "main": "Rain",
-               "id": 500,
-               "description": "\u5c0f\u96e8",
-               "icon": "10d"
-            }
-         ],
-         "clouds": 10,
-         "rain": 0.42
-      },
-      {
-         "humidity": 0,
-         "dt": "2017-04-18 02:00:00",
-         "pressure": 1026.44,
-         "deg": 334,
-         "speed": 3.54,
-         "temp": {
-            "max": 18.29,
-            "morn": 18.16,
-            "day": 17.25,
-            "eve": 17.39,
-            "min": 17.25,
-            "night": 18.29
-         },
-         "weather": [
-            {
+               "icon": "01d",
                "main": "Clear",
                "id": 800,
-               "description": "\u6674",
-               "icon": "01d"
+               "description": "\u6674"
             }
-         ],
-         "clouds": 24
+         ]
       }
    ]
 ]

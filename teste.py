@@ -14,17 +14,16 @@ def main():
     lon = coordinates[1]
     global lista
     lista = list()
-    
+    apixu ("")
     #openWeatherDaily()
     #openWeatherForecast ()
     #darkSky("minutely,hourly,daily,alerts,flags")
     #darkSky("currently,minutely,hourly,allerts,flags")
     #a = load("DarkSkyDaily.json")
-    #print (len(a))
-    
+    #print (len(a)) 
 #appkey para o openWeatherMap
 appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c","apixu":"9b0e54aba45b4826b7c175749172004"}
-files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSkyCurrent":"DarkSkyCurrent.json","DarkSkyDaily":"DarkSkyDaily.json"}
+files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSkyCurrent":"DarkSkyCurrent.json","DarkSkyDaily":"DarkSkyDaily.json","ApixuCurrent":"ApixuCurrent.json"}
 #previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
 #informação que conseguimos obter para esta api
 #clouds
@@ -87,11 +86,13 @@ def darkSky(kind):
             new_part[name] = item
         #guardar os dados no ficheiro
         save(new_part,files["DarkSkyDaily"])
-def apixu():
-    url = "http://api.apixu.com/v1/current.json?key=9b0e54aba45b4826b7c175749172004&q=15.07,80.32"
+def apixu(kind):
+    url = "http://api.apixu.com/v1/current.json?key=9b0e54aba45b4826b7c175749172004&q=" + lat + "," + lon
     response = urllib.request.urlopen(url).read().decode("utf-8")
     values = json.loads(response)
-    print (values)
+    del values["location"]
+    save(values,files["ApixuCurrent"])
+
 #metodo para ver as coordenadas atravez do ip, no final retorna um vector
 def loc():
     url = "http://ipinfo.io/json"
@@ -133,4 +134,4 @@ def load(file):
 #para arrancar o script automáticamente
 if __name__ == "__main__": main()
 #APIS
-#https://apidev.accuweather.com/developers/forecastsAPIParameters
+#https://www.wunderground.com/weather/api/
