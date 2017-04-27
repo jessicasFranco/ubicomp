@@ -1,30 +1,30 @@
 [
    {
       "current": {
-         "humidity": 88,
-         "temp_c": 19.0,
-         "cloud": 75,
-         "wind_mph": 5.6,
-         "wind_dir": "SSE",
-         "feelslike_c": 19.0,
-         "last_updated": "2017-04-24 14:15",
-         "last_updated_epoch": 1493039708,
-         "pressure_in": 30.5,
-         "wind_degree": 150,
-         "condition": {
-            "code": 1183,
-            "icon": "//cdn.apixu.com/weather/64x64/day/296.png",
-            "text": "Light rain"
-         },
-         "wind_kph": 9.0,
-         "temp_f": 66.2,
+         "last_updated": "2017-04-27 16:30",
+         "wind_dir": "NNW",
+         "vis_miles": 6.0,
+         "pressure_in": 30.2,
+         "cloud": 50,
+         "temp_c": 21.0,
+         "precip_in": 0.24,
+         "wind_mph": 9.4,
+         "wind_kph": 15.1,
          "is_day": 1,
-         "precip_in": 0.0,
-         "precip_mm": 0.1,
-         "pressure_mb": 1018.0,
-         "vis_km": 10.0,
-         "feelslike_f": 66.2,
-         "vis_miles": 6.0
+         "feelslike_f": 69.8,
+         "wind_degree": 340,
+         "last_updated_epoch": 1493307011,
+         "humidity": 64,
+         "feelslike_c": 21.0,
+         "precip_mm": 6.2,
+         "condition": {
+            "icon": "//cdn.apixu.com/weather/64x64/day/116.png",
+            "code": 1003,
+            "text": "Partly cloudy"
+         },
+         "temp_f": 69.8,
+         "pressure_mb": 1006.0,
+         "vis_km": 10.0
       }
    }
 ]

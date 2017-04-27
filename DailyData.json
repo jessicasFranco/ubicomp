@@ -1,29 +1,9 @@
 [
    {
-      "2017-04-24 13:30:00": {
-         "humidity": 82,
-         "temp": 20,
-         "temp_max": 20,
-         "pressure": 1018,
-         "temp_min": 20
-      }
-   },
-   {
-      "2017-04-24 13:30:00": {
-         "humidity": 82,
-         "temp": 20,
-         "temp_max": 20,
-         "pressure": 1018,
-         "temp_min": 20
-      }
-   },
-   {
-      "2017-04-24 13:30:00": {
-         "humidity": 82,
-         "temp": 20,
-         "temp_max": 20,
-         "pressure": 1018,
-         "temp_min": 20
-      }
+      "temp_max": 21,
+      "humidity": 64,
+      "pressure": 1006,
+      "temp": 21,
+      "temp_min": 21
    }
 ]

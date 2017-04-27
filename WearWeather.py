@@ -3,20 +3,24 @@ import json
 import os
 import forecastio 
 from datetime import datetime as dt
-
+#classe que trata de recolher os dados das diferentes apis do tempo e armazena os dados em ficheiros json
 class WearWeather:
     #appkey para o openWeatherMap
     appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c","apixu":"9b0e54aba45b4826b7c175749172004"}
     #ficheiros para gravar os dados retirados das apis
     files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSkyCurrent":"DarkSkyCurrent.json","DarkSkyDaily":"DarkSkyDaily.json","ApixuCurrent":"ApixuCurrent.json"}
     def __init__(self):
-        coordinates = self.loc()
+        self.coordinates = self.loc()
         #variavel global para a latitude
         global lat
-        lat = coordinates[0]
+        lat = self.coordinates[0]
         #variavel global para a longitude
         global lon
-        lon = coordinates[1]
+        lon = self.coordinates[1]
+        self.openWeatherDaily()
+        #self.openWeatherForecast()
+        self.apixu("")
+        self.darkSky("minutely,hourly,daily,alerts,flags")
     #previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
     #informação que conseguimos obter para esta api
     #clouds
@@ -37,11 +41,11 @@ class WearWeather:
         request = url + self.appid["openWeather"]
         response =urllib.request.urlopen(request).read().decode("utf-8")
         values = json.loads(response)
-        part = dict()
-        global dt
-        dt = self.convert_time(values["dt"])
-        part[str(dt)] = values["main"]   
-        self.save(part,self.files["DailyData"])   
+        #part = dict()
+        #global dt
+        #dt = self.convert_time(values["dt"])
+        #part[str(dt)] = values["main"]   
+        self.save(values["main"],self.files["DailyData"])   
     #previsão semanal do tempo usando a api openWeatherMap
     #city
     #message
@@ -55,8 +59,8 @@ class WearWeather:
         response =urllib.request.urlopen(request).read().decode("utf-8")
         values = json.loads(response)
         part = values["list"]
-        for val in part:
-            val["dt"] = str(self.convert_time(val["dt"]))
+        #for val in part:
+         #   val["dt"] = str(self.convert_time(val["dt"]))
         self.save(part,self.files["ForeCast"])
     #pervisões segundo a api darksky, retorna um json com os resultados
     #dá as previsões que estão momento ou um forecast dos proximos 7 dias
