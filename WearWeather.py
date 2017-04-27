@@ -40,11 +40,7 @@ class WearWeather:
         url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon
         request = url + self.appid["openWeather"]
         response =urllib.request.urlopen(request).read().decode("utf-8")
-        values = json.loads(response)
-        #part = dict()
-        #global dt
-        #dt = self.convert_time(values["dt"])
-        #part[str(dt)] = values["main"]   
+        values = json.loads(response)  
         self.save(values["main"],self.files["DailyData"])   
     #previsão semanal do tempo usando a api openWeatherMap
     #city

@@ -1,9 +1,9 @@
 [
    {
-      "temp_max": 21,
-      "humidity": 64,
-      "pressure": 1006,
-      "temp": 21,
-      "temp_min": 21
+      "temp": 19,
+      "temp_min": 19,
+      "temp_max": 19,
+      "humidity": 72,
+      "pressure": 1006
    }
 ]
