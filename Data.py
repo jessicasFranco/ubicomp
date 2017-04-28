@@ -59,6 +59,7 @@ class Data():
         #calcular a méda as pressoes
         for item in press:
             self.pressure += item
+        #lista com as precentagens de nuvens que estam no ceu
         for item in cloud_list:
             self.cloud += item
         self.cloud = round((self.cloud/len(cloud_list)),2)
@@ -66,8 +67,8 @@ class Data():
         self.precip_mm = round((self.precip_mm/len(precip)),2)
         self.temp = round((self.temp/len(temperature)),2)
         self.humidity = round(self.humidity/len(humid),2)
-        print (self.cloud)
-        print (self.pressure)
+        print (self.cloud," %")
+        print (self.pressure," mb")
         print (self.precip_mm, " mm")
         print (self.temp,"ºC")
         print (self.humidity,"%")

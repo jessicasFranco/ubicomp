@@ -1,20 +1,19 @@
 [
    {
-      "icon": "rain",
-      "apparentTemperature": 20.55,
-      "ozone": 365.85,
-      "summary": "Light Rain",
-      "windSpeed": 4.59,
-      "dewPoint": 13.81,
-      "humidity": 0.65,
-      "temperature": 20.55,
-      "windBearing": 20,
+      "cloudCover": 0.3,
+      "icon": "partly-cloudy-day",
+      "windBearing": 58,
+      "apparentTemperature": 17.66,
+      "humidity": 0.83,
+      "dewPoint": 14.76,
+      "precipIntensity": 0.0457,
+      "precipProbability": 0.04,
+      "windSpeed": 7.26,
+      "pressure": 1012.19,
+      "time": 1493374949,
+      "temperature": 17.66,
+      "ozone": 370.31,
       "precipType": "rain",
-      "time": 1493315659,
-      "pressure": 1006.57,
-      "cloudCover": 0.31,
-      "precipProbability": 0.57,
-      "precipIntensity": 0.3937,
-      "visibility": 9.99
+      "summary": "Partly Cloudy"
    }
 ]
