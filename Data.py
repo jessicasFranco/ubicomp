@@ -10,14 +10,14 @@ class Data():
         #self.DarkSkyDaily = self.wearWeather.load(self.wearWeatherFiles["DarkSkyDaily"])
         self.DailyData = self.wearWeather.load(self.wearWeatherFiles["DailyData"])
         self.darkSkyCurrent = self.wearWeather.load(self.wearWeatherFiles["darkSkyCurrent"])
+        self.getValues()     
+    #metodo para fazer a média de todas as temperaturas
+    def getValues(self):
         self.temp = 0
         self.precip_mm = 0
         self.humidity = 0
         self.pressure = 0
         self.cloud = 0
-        self.getValues()     
-    #metodo para fazer a média de todas as temperaturas
-    def getValues(self):
         #lista que irá ter todas as temperatutas das Apis
         temperature = list()
         #lista para a quantidade percipitação de todas as apis
