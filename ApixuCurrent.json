@@ -1,30 +1,58 @@
 [
    {
       "current": {
-         "wind_degree": 360,
-         "last_updated_epoch": 1493374514,
-         "precip_in": 0.12,
-         "vis_km": 10.0,
-         "pressure_in": 30.4,
          "last_updated": "2017-04-28 11:15",
-         "is_day": 1,
-         "wind_mph": 10.5,
-         "humidity": 82,
-         "vis_miles": 6.0,
-         "wind_dir": "N",
-         "temp_f": 60.8,
          "condition": {
+            "icon": "//cdn.apixu.com/weather/64x64/day/116.png",
             "code": 1003,
-            "text": "Partly cloudy",
-            "icon": "//cdn.apixu.com/weather/64x64/day/116.png"
+            "text": "Partly cloudy"
          },
-         "feelslike_c": 16.0,
-         "wind_kph": 16.9,
-         "cloud": 75,
-         "feelslike_f": 60.8,
-         "precip_mm": 3.1,
+         "vis_miles": 6.0,
          "pressure_mb": 1013.0,
-         "temp_c": 16.0
+         "pressure_in": 30.4,
+         "last_updated_epoch": 1493374514,
+         "feelslike_c": 16.0,
+         "wind_degree": 360,
+         "is_day": 1,
+         "wind_dir": "N",
+         "humidity": 82,
+         "precip_mm": 3.1,
+         "vis_km": 10.0,
+         "feelslike_f": 60.8,
+         "temp_c": 16.0,
+         "wind_kph": 16.9,
+         "precip_in": 0.12,
+         "cloud": 75,
+         "wind_mph": 10.5,
+         "temp_f": 60.8
+      }
+   },
+   {
+      "current": {
+         "last_updated": "2017-04-28 11:15",
+         "condition": {
+            "icon": "//cdn.apixu.com/weather/64x64/day/116.png",
+            "text": "Partly cloudy",
+            "code": 1003
+         },
+         "temp_f": 60.8,
+         "pressure_mb": 1013.0,
+         "precip_in": 0.12,
+         "last_updated_epoch": 1493374514,
+         "feelslike_c": 16.0,
+         "wind_degree": 360,
+         "is_day": 1,
+         "wind_dir": "N",
+         "humidity": 82,
+         "precip_mm": 3.1,
+         "vis_km": 10.0,
+         "feelslike_f": 60.8,
+         "temp_c": 16.0,
+         "wind_kph": 16.9,
+         "pressure_in": 30.4,
+         "cloud": 75,
+         "wind_mph": 10.5,
+         "vis_miles": 6.0
       }
    }
 ]
