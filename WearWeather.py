@@ -1,7 +1,6 @@
 import urllib.request
 import json
 import os
-import forecastio 
 from datetime import datetime as dt
 #classe que trata de recolher os dados das diferentes apis do tempo e armazena os dados em ficheiros json
 class WearWeather:
