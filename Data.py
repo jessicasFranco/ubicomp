@@ -2,7 +2,7 @@ from WearWeather import WearWeather
 class Data():
     #metodo para inicializar o obj Data
     def __init__(self):
-        #inicialização das vaiáveis que são necessárias para retirar o tempo
+        #inicializacao das vaiaveis que sao necessarias para retirar o tempo
         self.wearWeather = WearWeather()
         self.wearWeatherFiles = self.wearWeather.files
         #self.forecast = self.wearWeather.load(self.wearWeatherFiles["ForeCast"])
@@ -11,23 +11,23 @@ class Data():
         self.DailyData = self.wearWeather.load(self.wearWeatherFiles["DailyData"])
         self.darkSkyCurrent = self.wearWeather.load(self.wearWeatherFiles["darkSkyCurrent"])
         self.getValues()     
-    #metodo para fazer a média de todas as temperaturas
+    #metodo para fazer a media de todas as temperaturas
     def getValues(self):
         self.temp = 0
         self.precip_mm = 0
         self.humidity = 0
         self.pressure = 0
         self.cloud = 0
-        #lista que irá ter todas as temperatutas das Apis
+        #lista que ira ter todas as temperatutas das Apis
         temperature = list()
-        #lista para a quantidade percipitação de todas as apis
+        #lista para a quantidade percipitacao de todas as apis
         precip = list()
         #lista para as humidades
         humid = list()
-        #lista para as pressoes atmosféricas
+        #lista para as pressoes atmosfericas
         press = list ()
         cloud_list = list()
-        #para percorrer os valores retirados e da Apixu e poem na lista das temperaturas  para mais tarde fazer média
+        #para percorrer os valores retirados e da Apixu e poem na lista das temperaturas  para mais tarde fazer media
         for item in self.ApixuCurrent:
             temperature.append(item["current"]["temp_c"])
             precip.append(item["current"]["precip_mm"])
@@ -47,16 +47,16 @@ class Data():
             humid.append(item["humidity"]*100)
             press.append(item["pressure"])
             cloud_list.append(item["cloudCover"]*100)
-        #calcular a média das temperaturas com base em todas as apis
+        #calcular a media das temperaturas com base em todas as apis
         for item in temperature:
             self.temp += item
-        #calcular a média das quantidades de precipitações
+        #calcular a media das quantidades de precipitações
         for item in precip:
             self.precip_mm += item
-        #calcular a média das humidades
+        #calcular a media das humidades
         for item in humid:
             self.humidity += item
-        #calcular a méda as pressoes
+        #calcular a meda as pressoes
         for item in press:
             self.pressure += item
         #lista com as precentagens de nuvens que estam no ceu
@@ -68,7 +68,7 @@ class Data():
         self.temp = round((self.temp/len(temperature)),2)
         self.humidity = round(self.humidity/len(humid),2)
         print ("precentagem de nuvens: ",self.cloud," %")
-        print ("pressão atmosférica: ",self.pressure," mb")
-        print ("percepitação: ",self.precip_mm, " mm")
+        print ("pressao atmosferica: ",self.pressure," mb")
+        print ("percepitacao: ",self.precip_mm, " mm")
         print ("temperatura: ",self.temp,"ºC")
         print ("humidade relativa:",self.humidity,"%")

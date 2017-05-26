@@ -20,7 +20,7 @@ class WearWeather:
         #self.openWeatherForecast()
         self.apixu("")
         self.darkSky("minutely,hourly,daily,alerts,flags")
-    #previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
+    #previsao do tempo diaria para api openWeatherMap, retorn um ficheiro jsaon com os resultados
     #informação que conseguimos obter para esta api
     #clouds
     #sys
@@ -35,13 +35,13 @@ class WearWeather:
     #visibility
     #base
     def openWeatherDaily (self):
-        #link responsável pelos pedidos
+        #link responsavel pelos pedidos
         url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon
         request = url + self.appid["openWeather"]
         response =urllib.request.urlopen(request).read().decode("utf-8")
         values = json.loads(response)  
         self.save(values["main"],self.files["DailyData"])   
-    #previsão semanal do tempo usando a api openWeatherMap
+    #previsao semanal do tempo usando a api openWeatherMap
     #city
     #message
     #list
@@ -57,8 +57,8 @@ class WearWeather:
         #for val in part:
          #   val["dt"] = str(self.convert_time(val["dt"]))
         self.save(part,self.files["ForeCast"])
-    #pervisões segundo a api darksky, retorna um json com os resultados
-    #dá as previsões que estão momento ou um forecast dos proximos 7 dias
+    #pervisoes segundo a api darksky, retorna um json com os resultados
+    #da as previsoes que estao momento ou um forecast dos proximos 7 dias
     def darkSky(self,kind):  
         url = "https://api.darksky.net/forecast/" + self.appid["darkSky"] + "/" + lat + "," + lon + "?exclude=" + kind + "&units=auto"
         response = urllib.request.urlopen(url).read().decode("utf-8")
@@ -70,7 +70,7 @@ class WearWeather:
             #guardar os dados no ficheiro
             self.save (part,self.files["darkSkyCurrent"])
         elif (kind == "currently,minutely,hourly,allerts,flags"):
-            #dados da previão para a semana
+            #dados da previsao para a semana
             part = values["daily"]["data"]
             new_part = dict()
             for item in part:
@@ -93,10 +93,10 @@ class WearWeather:
         coordinates = values["loc"].split(",")
         return coordinates
 
-    #função para converter as datas em formato unix para formato normal    
+    #funcao para converter as datas em formato unix para formato normal    
     def convert_time(self,date):
        return dt.fromtimestamp(date)
-    #função para escrever os dados num ficheiro 
+    #funcao para escrever os dados num ficheiro 
     def save (self,dataInput,file):
        if not os.path.exists(file):
            #retorna o ficheiro e o modo que pode ser usado neste caso w=writing e fecha-o

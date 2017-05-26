@@ -12,5 +12,26 @@
       "temp_max": 16,
       "pressure": 1013,
       "humidity": 82
+   },
+   {
+      "temp": 17,
+      "pressure": 1016,
+      "humidity": 67,
+      "temp_min": 17,
+      "temp_max": 17
+   },
+   {
+      "temp": 17,
+      "pressure": 1016,
+      "humidity": 67,
+      "temp_min": 17,
+      "temp_max": 17
+   },
+   {
+      "temp": 20,
+      "pressure": 1017,
+      "humidity": 60,
+      "temp_min": 20,
+      "temp_max": 20
    }
 ]
