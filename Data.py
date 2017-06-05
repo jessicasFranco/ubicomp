@@ -2,7 +2,7 @@ from WearWeather import WearWeather
 class Data():
     #metodo para inicializar o obj Data
     def __init__(self):
-        #inicializacao das vaiaveis que sao necessarias para retirar o tempo
+        #inicializacaoo das vaiaveis que sao necessarias para retirar o tempo
         self.wearWeather = WearWeather()
         self.wearWeatherFiles = self.wearWeather.files
         #self.forecast = self.wearWeather.load(self.wearWeatherFiles["ForeCast"])
@@ -10,7 +10,7 @@ class Data():
         #self.DarkSkyDaily = self.wearWeather.load(self.wearWeatherFiles["DarkSkyDaily"])
         self.DailyData = self.wearWeather.load(self.wearWeatherFiles["DailyData"])
         self.darkSkyCurrent = self.wearWeather.load(self.wearWeatherFiles["darkSkyCurrent"])
-        self.getValues()     
+        self.getValues()
     #metodo para fazer a media de todas as temperaturas
     def getValues(self):
         self.temp = 0
@@ -50,13 +50,13 @@ class Data():
         #calcular a media das temperaturas com base em todas as apis
         for item in temperature:
             self.temp += item
-        #calcular a media das quantidades de precipitações
+        #calcular a media das quantidades de precipitacoes
         for item in precip:
             self.precip_mm += item
         #calcular a media das humidades
         for item in humid:
             self.humidity += item
-        #calcular a meda as pressoes
+        #calcular a media as pressoes
         for item in press:
             self.pressure += item
         #lista com as precentagens de nuvens que estam no ceu
@@ -67,8 +67,8 @@ class Data():
         self.precip_mm = round((self.precip_mm/len(precip)),2)
         self.temp = round((self.temp/len(temperature)),2)
         self.humidity = round(self.humidity/len(humid),2)
-        print ("precentagem de nuvens: ",self.cloud," %")
-        print ("pressao atmosferica: ",self.pressure," mb")
-        print ("percepitacao: ",self.precip_mm, " mm")
-        print ("temperatura: ",self.temp,"ºC")
-        print ("humidade relativa:",self.humidity,"%")
+        # print ("precentagem de nuvens: ",self.cloud," %")
+        # print ("pressao atmosferica: ",self.pressure," mb")
+        # print ("percepitacao: ",self.precip_mm, " mm")
+        # print ("temperatura: ",self.temp," C")
+        # print ("humidade relativa:",self.humidity,"%")

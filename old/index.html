@@ -15,7 +15,6 @@
     <button id="signout-button">Sign Out</button>
 
     <pre id="content"></pre>
-
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
       var CLIENT_ID = '895213534805-vsqraokfbsd29dedacrtjv63upgiv5fh.apps.googleusercontent.com';
@@ -128,9 +127,7 @@
             appendPre('No upcoming events found.');
           }
         });
-      }
-	  
-	  
+      }	  
 	  function refreshICalendarframe() {
             var iframe = document.getElementById('divifm')
             iframe.innerHTML = iframe.innerHTML;

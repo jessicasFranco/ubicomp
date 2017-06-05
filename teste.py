@@ -24,8 +24,8 @@ def main():
 #appkey para o openWeatherMap
 appid = {"openWeather":"&appid=fc9f6c524fc093759cd28d41fda89a1b&units=metric","darkSky":"c75cdccb9021f4787ffd4802392d552c","apixu":"9b0e54aba45b4826b7c175749172004"}
 files = {"DailyData":"DailyData.json","ForeCast":"ForeCast.json","darkSkyCurrent":"DarkSkyCurrent.json","DarkSkyDaily":"DarkSkyDaily.json","ApixuCurrent":"ApixuCurrent.json"}
-#previsao do tempo diaria para api openWeatherMap, retorn um ficheiro jsaon com os resultados
-#informacao que conseguimos obter para esta api
+#previsão do tempo diária para api openWeatherMap, retorn um ficheiro jsaon com os resultados
+#informação que conseguimos obter para esta api
 #clouds
 #sys
 #weather
@@ -49,7 +49,7 @@ def openWeatherDaily ():
     dt = convert_time(values["dt"])
     part[str(dt)] = values["main"]   
     save(part,files["DailyData"])   
-#previsao semanal do tempo usando a api openWeatherMap
+#previsão semanal do tempo usando a api openWeatherMap
 #city
 #message
 #list
@@ -65,8 +65,8 @@ def openWeatherForecast ():
     for val in part:
         val["dt"] = str(convert_time(val["dt"]))
     save(part,files["ForeCast"])
-#pervisoes segundo a api darksky, retorna um json com os resultados
-#dá as previsoes que estão momento ou um forecast dos proximos 7 dias
+#pervisões segundo a api darksky, retorna um json com os resultados
+#dá as previsões que estão momento ou um forecast dos proximos 7 dias
 def darkSky(kind):  
     url = "https://api.darksky.net/forecast/" + appid["darkSky"] + "/" + lat + "," + lon + "?exclude=" + kind + "&units=auto"
     response = urllib.request.urlopen(url).read().decode("utf-8")
@@ -78,7 +78,7 @@ def darkSky(kind):
         #guardar os dados no ficheiro
         save (part,files["darkSkyCurrent"])
     elif (kind == "currently,minutely,hourly,allerts,flags"):
-        #dados da previsao para a semana
+        #dados da previão para a semana
         part = values["daily"]["data"]
         new_part = dict()
         for item in part:
@@ -101,10 +101,10 @@ def loc():
     coordinates = values["loc"].split(",")
     return coordinates
 
-#funcao para converter as datas em formato unix para formato normal    
+#função para converter as datas em formato unix para formato normal    
 def convert_time(date):
    return dt.fromtimestamp(date)
-#funcao para escrever os dados num ficheiro 
+#função para escrever os dados num ficheiro 
 def save (dataInput,file):
    if not os.path.exists(file):
        #retorna o ficheiro e o modo que pode ser usado neste caso w=writing e fecha-o
@@ -131,7 +131,7 @@ def load(file):
         lista = json.load(f)
         return lista      
             
-#para arrancar o script automaticamente
+#para arrancar o script automáticamente
 if __name__ == "__main__": main()
 #APIS
 #https://www.wunderground.com/weather/api/

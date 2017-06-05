@@ -21,7 +21,7 @@ class WearWeather:
         self.apixu("")
         self.darkSky("minutely,hourly,daily,alerts,flags")
     #previsao do tempo diaria para api openWeatherMap, retorn um ficheiro jsaon com os resultados
-    #informação que conseguimos obter para esta api
+    #informacao que conseguimos obter para esta api
     #clouds
     #sys
     #weather
